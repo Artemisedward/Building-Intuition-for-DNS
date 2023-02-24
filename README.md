@@ -46,25 +46,34 @@ To create the A-record, follow these steps: go to Server Manager-> Tools-> DNS->
 Now, if we return to the client machine and ping "mainframe", we should receive a reply.
 
 
-<h4>Flush DNS Cache</h4>
+<h3>Flush DNS Cache</h3>
 <p>
-<img src="https://i.imgur.com/xKePr4k.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/dgogZWO.png" height="65%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
-<img src="https://i.imgur.com/yAlrhZw.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/p0ZorN4.png" height="65%" width="70%" alt="Disk Sanitization Steps"/>
 <p>
-Now we will change the record address of "mainframe" to 8.8.8.8 if we go back to the client machine it will still ping the old adress even though we changed it. That is because we have to flush the DNS with the command ipconfig /flushdns. That will clear the DNS cache, when we attempt to ping mainframe again the address of the new record will show. 
+Next, we'll change the record address of "mainframe" to 8.8.8.8. However, when we return to the client machine and attempt to ping "mainframe", it will still use the old address. This is because the DNS cache needs to be cleared with the command "ipconfig /flushdns".
 </p>
 <br />
-<img src="https://i.imgur.com/KYNmZMz.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/LE0ND0e.png" height="65%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
-<img src="https://i.imgur.com/80ARdZu.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+After running this command, the DNS cache will be cleared, and when we attempt to ping "mainframe" again, the address of the new record will be displayed.
+
+
+<h3>Configure a CNAME Record</h3>
+
+<p>
+<img src="https://i.imgur.com/BfSyAuu.png" height="60%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lastly we will configure a CNAME record that points the host "search" to "www.google.com" If we ping "search" ping will not be able to find the host. we have to go back into the DNS tool on DC-1 and create the CNAME record "search". Once we create the CNAME record is created and we ping "search" it will resolve to www.google.com.
-</p>
-<br />
+Lastly, we'll configure a CNAME record that points the host "search" to "www.google.com". If we attempt to ping "search", it won't be found.
 <p>
-<img src="https://i.imgur.com/LgomfqN.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/Zgw1nD8.png" height="60%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
-<img src="https://i.imgur.com/NovtDrd.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <p>
+To fix this, we'll need to go back to the DNS tool on DC-1 and create the CNAME record for "search". 
+<p>
+<img src="https://i.imgur.com/mDBa0cX.png" height="60%" width="70%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Once the CNAME record is created, we can ping "search" and it will correctly resolve to "www.google.com".

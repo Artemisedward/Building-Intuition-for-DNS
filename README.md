@@ -25,18 +25,18 @@ In this lab we will be experimenting with DNS. This lab will help us have a bett
 </p>
 <p>
 In this task, we'll be examining DNS A-Records on server DC-1. A-Records map hostnames to IP addresses. Our goal is to create an A record for "mainframe" and have it point to DC-1's private IP address.
-
-Without setting the DNS record, attempting to ping "mainframe" will fail. 
-<br />When we do ping "mainframe", Client-1 will first check its DNS cache, then its local host file, and finally the DNS server.
 <p>
 <img src="https://i.imgur.com/fU5qTCv.png" height="50%" width="65%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
+Without setting the DNS record, attempting to ping "mainframe" will fail. 
+<br />When we do ping "mainframe", Client-1 will first check its DNS cache, then its local host file, and finally the DNS server.
 
-Create a DNS A-record on DC-1 for “mainframe” and have it point to DC-1’s Private IP address
 <p>
 <img src="https://i.imgur.com/VndZBu0.png" height="60%" width="75%" alt="Disk Sanitization Steps"/>
 </p>
+<p>
+Create a DNS A-record on DC-1 for “mainframe” and have it point to DC-1’s Private IP address
 <p>
 To create the A-record, follow these steps: go to Server Manager-> Tools-> DNS-> DC-1-> Forward lookup zones-> mydomain.com-> right click and create a new A record. Give it the title "mainframe". Set same IP address as your machines Private IP address. 
 <p>
@@ -57,7 +57,7 @@ Next, we'll change the record address of "mainframe" to 8.8.8.8. However, when w
 <br />
 <img src="https://i.imgur.com/LE0ND0e.png" height="65%" width="70%" alt="Disk Sanitization Steps"/>
 </p>
-After running this command, the DNS cache will be cleared, and when we attempt to ping "mainframe" again, the address of the new record will be displayed.
+After running command "ipconfig /flushdns", the DNS cache will be cleared, and when we attempt to ping "mainframe" again, the address of the new record will be displayed.
 
 
 <h3>Configure a CNAME Record</h3>
